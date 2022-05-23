@@ -23,7 +23,7 @@ class Game {
         scene.add(light);
         loopMachine.addCallback(this.render);
         loopMachine.start()
-        camera.position.set(0, 5, 25)
+        camera.position.set(0, 3,15)
         resize.start(renderer)
     }
 

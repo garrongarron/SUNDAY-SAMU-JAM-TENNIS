@@ -4,6 +4,7 @@ import { CharacterController } from "../../controllers/CharacterController.js"
 import { KeyController } from "../../controllers/KeyController.js"
 import { MoveController } from "../../controllers/MoveController.js"
 import { PhysicsController } from "../../controllers/PhysicsController.js"
+import { TennisGameController } from "../../controllers/TennisGameController.js"
 
 class CustomController {
     constructor(peerId) {
@@ -21,6 +22,8 @@ class CustomController {
         this.animationController = new AnimationController(this.peerId)
         this.cameraController = new CameraController(this.peerId)
         this.physicsController = new PhysicsController(this.peerId)
+        this.tennisGameController = new TennisGameController(this.peerId)
+        
         
     }
     start(character) {
@@ -33,6 +36,7 @@ class CustomController {
         this.characterController.addController(this.animationController)
         this.characterController.addController(this.cameraController)
         this.characterController.addController(this.physicsController)
+        this.characterController.addController(this.tennisGameController)
         this.characterController.start()
     }
     stop() {

@@ -9,11 +9,12 @@ class AnimationController {
         this.peerId = peerId
         this.state = null
         this.transitionHandler = null
-        this.sentido = true
         this.force = 1
+        this.inProgress = false
     }
     init(characterController) {
         this.state = characterController.state
+        this.character = characterController.character
         if (!this.transitionHandler) {
             this.transitionHandler = new TransitionHandler(characterController.character)
 
@@ -25,39 +26,46 @@ class AnimationController {
     }
     reset = () => {
         this.transitionHandler.callback = () => {
-            // if(this.state.mode == mode.LOW_LEFT || this.state.mode == mode.LOW_RIGHT){
-                const body =  spawner.getCustomController(nick).physicsController.ball.userData.physicsBody
-                const ball = spawner.getCustomController(nick).physicsController.ball
-                // body.setAngularVelocity(new Ammo.btVector3(0, 1, 0));
-                let z = -1*THREE.MathUtils.clamp(ball.position.z, -1, 1)
-                // body.applyImpulse(new Ammo.btVector3(0, .5, z));
-                body.clearForces()
-                // body.applyCentralImpulse(new Ammo.btVector3(0, .4, this.sentido ? .5 : -.5));
-                
-                setTimeout(() => {
-                    body.applyCentralImpulse(new Ammo.btVector3(0, .5, z));
-                }, 10);
-                // setTimeout(() => {
-                //     body.applyCentralImpulse(new Ammo.btVector3(0, .4,  this.sentido ? .5 : -.5));
-                // }, 20);
-                // body.applyForce(new Ammo.btVector3(0, .2, this.sentido?.5:-.5),new Ammo.btVector3(0, 0, 0) );
-                console.log('aaa', z )
-                this.sentido = !this.sentido
-                
-            // }
             this.state.mode == mode.IDLE
         }
     }
+    hitBall() {
+
+        const body = spawner.getCustomController(nick).physicsController.ball.userData.physicsBody
+        const ball = spawner.getCustomController(nick).physicsController.ball
+
+        // if (this.character.position.distanceTo(ball.position) > 2) return console.log('fail')
+
+        const force = .8
+        let z = -1 * THREE.MathUtils.clamp(ball.position.z, -force, force)
+        body.setLinearVelocity(new Ammo.btVector3(0, .5, z));
+        body.applyCentralImpulse(new Ammo.btVector3(0, .5, z));
+    }
+
     tick() {
         if (this.peerId == nick) {
             // console.log('mode', this.state.mode)
         }
         if (this.state.mode == mode.LOW_LEFT) {
-            this.transitionHandler.action(2, 2, true)
+            this.transitionHandler.action(2, 3, true)
+            if (!this.inProgress) {
+                setTimeout(() => {
+                    this.inProgress = false
+                    this.hitBall()
+                }, 200);
+            }
+            this.inProgress = true
             return this.reset()
         }
         if (this.state.mode == mode.LOW_RIGHT) {
-            this.transitionHandler.action(1, 2, true)
+            this.transitionHandler.action(1, 3, true)
+            if (!this.inProgress) {
+                setTimeout(() => {
+                    this.inProgress = false
+                    this.hitBall()
+                }, 200);
+            }
+            this.inProgress = true
             return this.reset()
         }
 
