@@ -30,16 +30,9 @@ class AnimationController {
         }
     }
     hitBall() {
-
-        const body = spawner.getCustomController(nick).physicsController.ball.userData.physicsBody
         const ball = spawner.getCustomController(nick).physicsController.ball
-
-        // if (this.character.position.distanceTo(ball.position) > 2) return console.log('fail')
-
-        const force = .8
-        let z = -1 * THREE.MathUtils.clamp(ball.position.z, -force, force)
-        body.setLinearVelocity(new Ammo.btVector3(0, .5, z));
-        body.applyCentralImpulse(new Ammo.btVector3(0, .5, z));
+        if (this.character.position.distanceTo(ball.position) > 2) return console.log('fail')
+        spawner.getCustomController(nick).tennisGameController.hitBall()
     }
 
     tick() {
@@ -52,7 +45,7 @@ class AnimationController {
                 setTimeout(() => {
                     this.inProgress = false
                     this.hitBall()
-                }, 200);
+                }, 300);
             }
             this.inProgress = true
             return this.reset()
@@ -63,7 +56,7 @@ class AnimationController {
                 setTimeout(() => {
                     this.inProgress = false
                     this.hitBall()
-                }, 200);
+                }, 300);
             }
             this.inProgress = true
             return this.reset()

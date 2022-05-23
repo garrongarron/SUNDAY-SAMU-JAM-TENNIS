@@ -8,6 +8,7 @@ import scene from "../basic/Scene.js";
 // import plane from "../basic/shapes/Plane.js";
 // import sphere from "../basic/shapes/Sphere.js";
 import nick from "../services/nick.js";
+import menu from "../UI/menu.js";
 import campo from "./files/Campo.js";
 import spawner from "./files/Spawner.js";
 
@@ -18,12 +19,12 @@ class Game {
         campo()
         const player = spawner.createPlayer(nick)
         player.start()
-        
+        menu.start()
         // scene.add(sphere);
         scene.add(light);
         loopMachine.addCallback(this.render);
         loopMachine.start()
-        camera.position.set(0, 3,15)
+        camera.position.set(0, 7,20)
         resize.start(renderer)
     }
 

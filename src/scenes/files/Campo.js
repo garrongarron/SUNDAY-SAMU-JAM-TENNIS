@@ -18,7 +18,7 @@ const campo = () => {
 
     //lineas
     const lineas = cube.clone()
-    lineas.scale.set(8.2, 1, 24.2)
+    lineas.scale.set(11.2, 1, 24.2)
     lineas.position.y = -.55
     const material = new THREE.MeshBasicMaterial({ color: 0xFFFFFF });
     lineas.material = material
@@ -26,7 +26,7 @@ const campo = () => {
 
     //area
     const area = cube.clone()
-    area.scale.set(14, 1, 40)
+    area.scale.set(20, 1, 40)
     area.position.y = -.6
     scene.add(area);
 
@@ -34,7 +34,7 @@ const campo = () => {
     const red = cube.clone()
     const redMaterial = new THREE.MeshBasicMaterial({ color: 0x333333 });
     red.material = redMaterial
-    red.scale.set(8, 2, .1)
+    red.scale.set(11, 2, .1)
     red.opacity = .5
     red.transparent = true
     scene.add(red);

@@ -9,7 +9,7 @@ renderer.toneMappingExplosure = 8.3
 
 const canvas = renderer.domElement
 
-renderer.setClearColor(0xFFFFFF);
+renderer.setClearColor(0x222222);
 
 
 export default renderer

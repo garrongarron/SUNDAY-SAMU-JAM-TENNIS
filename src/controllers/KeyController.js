@@ -54,12 +54,24 @@ class KeyController {
 
         if (this.keyListener.isPressed(keyCode.KEY_W)) this.state.translation.y = 1
         if (this.keyListener.isPressed(keyCode.KEY_S)) this.state.translation.y = -1
+
+        if (this.keyListener.isPressed(keyCode.UP_ARROW)) this.state.translation.y = 1
+        if (this.keyListener.isPressed(keyCode.DOWN_ARROW)) this.state.translation.y = -1
         
         if (this.keyListener.isPressed(keyCode.KEY_A)) {
             this.state.mode = mode.RUN_RIGHT
             this.state.translation.x = 1
         }
         if (this.keyListener.isPressed(keyCode.KEY_D)) {
+            this.state.mode = mode.RUN_LEFT
+            this.state.translation.x = -1
+        }
+
+        if (this.keyListener.isPressed(keyCode.LEFT_ARROW)) {
+            this.state.mode = mode.RUN_RIGHT
+            this.state.translation.x = 1
+        }
+        if (this.keyListener.isPressed(keyCode.RIGHT_ARROW)) {
             this.state.mode = mode.RUN_LEFT
             this.state.translation.x = -1
         }

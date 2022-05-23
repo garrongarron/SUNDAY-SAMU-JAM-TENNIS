@@ -22,7 +22,8 @@ class CameraController {
     }
 
     tick() {
-        this.camera.lookAt(this.character.position)
+        // this.camera.lookAt(this.character.position)
+        this.camera.lookAt(0,-4,0)
     }
 }
 

@@ -23,14 +23,14 @@ class PhysicsController {
             const quat = new THREE.Quaternion();
             pos.set(0, -0.5, 0);
             quat.set(0, 0, 0, 1);
-            this.ground = createParalellepiped(8, 1, 24, 0 /*mass*/, pos, quat, new THREE.MeshPhongMaterial({ color: 0xFFFFFF }));
+            this.ground = createParalellepiped(11, 1, 24, 0 /*mass*/, pos, quat, new THREE.MeshPhongMaterial({ color: 0xFFFFFF }));
 
 
             const pos2 = new THREE.Vector3();
             const quat2 = new THREE.Quaternion();
             pos2.set(0, 5, 1);
             quat2.set(0, 0, 0, 1);
-            this.ball = createBall( .1 /*mass*/, pos2, quat2, new THREE.MeshPhongMaterial({ color: 0x00FF00 }));
+            this.ball = createBall( .1 /*mass*/, pos2, quat2, new THREE.MeshPhongMaterial({ color: 0xcc9900 }));
         })
     }
     tick() {

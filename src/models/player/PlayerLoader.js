@@ -17,7 +17,7 @@ const getPlayerModel = (peerId) => {
     // if(model) return model
     const animationLoader = new AnimationLoader(urlModel, urlAnimations)
     const promiseLoader = new PromiseLoader(THREE.FBXLoader, function (object) {
-        const scale = .01
+        const scale = .02
         object.scale.set(scale, scale, scale)
         object.traverse(function (child) {
             if (child.isMesh) {
