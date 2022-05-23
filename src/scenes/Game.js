@@ -24,7 +24,7 @@ class Game {
         scene.add(light);
         loopMachine.addCallback(this.render);
         loopMachine.start()
-        camera.position.set(0, 7,20)
+        camera.position.set(0, 6,23)
         resize.start(renderer)
     }
 

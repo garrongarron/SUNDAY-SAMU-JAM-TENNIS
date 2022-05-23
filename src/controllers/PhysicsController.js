@@ -30,7 +30,7 @@ class PhysicsController {
             const quat2 = new THREE.Quaternion();
             pos2.set(0, 5, 1);
             quat2.set(0, 0, 0, 1);
-            this.ball = createBall( .1 /*mass*/, pos2, quat2, new THREE.MeshPhongMaterial({ color: 0xcc9900 }));
+            this.ball = createBall( .1 /*mass*/, pos2, quat2, new THREE.MeshPhongMaterial({ color: 0xcce9900 }));
         })
     }
     tick() {
